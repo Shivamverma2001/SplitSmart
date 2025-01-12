@@ -10,4 +10,9 @@
     <string name="menu_groups">Groups</string>
     <string name="menu_friends">Friends</string>
     <string name="menu_activity">Activity</string>
+    <string name="don_t_have_an_account_sign_up_here">Don\'t have an account? Sign up here!</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account_login_here">Already have an account? Login here!</string>
 </resources>

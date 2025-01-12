@@ -8,6 +8,7 @@ import android.os.Handler;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.sv.splitsmart.MainActivity;
 import com.sv.splitsmart.R;
 
@@ -20,14 +21,15 @@ public class SplashScreen extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash_screen);
         // Delay for 2 seconds
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Navigate to Main Activity
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(intent);
-                finish(); // Close SplashActivity
+        new Handler().postDelayed(() -> {
+            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                // User already logged in, go to MainActivity
+                startActivity(new Intent(SplashScreen.this, MainActivity.class));
+            } else {
+                // User not logged in, go to LoginActivity
+                startActivity(new Intent(SplashScreen.this, LoginActivity.class));
             }
-        }, 2000); // Adjust time as needed (2000ms = 2 seconds)
+            finish();
+        }, 2000); // Splash screen duration (2 seconds)
     }
 }
